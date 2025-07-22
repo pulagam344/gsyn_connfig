@@ -62,7 +62,7 @@ game_manager:
       logging_dir: ${log_dir}
       fp16: ${training.fp16}
       # fp16: true
-      bf16: true
+      # bf16: true
     log_with: wandb
     log_dir: ${log_dir}
     epsilon: 0.2
