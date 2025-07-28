@@ -107,7 +107,7 @@ class SwarmGameManager(BaseGameManager, DefaultGameManagerMixin):
         self.batched_signals = 10.0
         self.time_since_submit = time.time() #seconds
         self.submit_period = 0.1 #hours
-        self.submitted_this_round = False
+        self.submitted_this_round = True
 
     def _get_total_rewards_by_agent(self):
         rewards_by_agent = defaultdict(int)
@@ -175,7 +175,7 @@ class SwarmGameManager(BaseGameManager, DefaultGameManagerMixin):
             self._try_submit_to_chain(signal_by_agent)
         
         # Reset flag for next round
-        self.submitted_this_round = False
+        self.submitted_this_round = True
 
         # Block until swarm round advances
         self.agent_block()
