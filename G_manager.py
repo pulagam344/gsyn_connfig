@@ -106,7 +106,7 @@ class SwarmGameManager(BaseGameManager, DefaultGameManagerMixin):
         with open(os.path.join(log_dir, f"system_info.txt"), "w") as f:
             f.write(get_system_info())
 
-        self.batched_signals = 40.0
+        self.batched_signals = 10.0
 
     def _get_total_rewards_by_agent(self):
         rewards_by_agent = defaultdict(int)
@@ -133,7 +133,7 @@ class SwarmGameManager(BaseGameManager, DefaultGameManagerMixin):
             self.coordinator.submit_reward(
                 self.state.round, 0, int(self.batched_signals), self.peer_id
             )
-            self.batched_signals = 40.0
+            self.batched_signals = 10.0
             max_agent, max_signal = max(signal_by_agent.items(), key=lambda x: x[1])
             self.coordinator.submit_winners(self.state.round, [max_agent], self.peer_id)
 
