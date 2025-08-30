@@ -304,7 +304,7 @@ class SwarmGameManager(BaseGameManager, DefaultGameManagerMixin):
         with open(os.path.join(log_dir, f"system_info.txt"), "w") as f:
             f.write(get_system_info())
 
-        self.batched_signals = 2.0
+        self.batched_signals = 1.0
         self.time_since_submit = time.time()  # seconds
         self.submit_period = 0.25  # hours
         self.submitted_this_round = False
@@ -343,7 +343,7 @@ class SwarmGameManager(BaseGameManager, DefaultGameManagerMixin):
                 self.coordinator.submit_reward(
                     self.state.round, 0, int(self.batched_signals), self.peer_id
                 )
-                self.batched_signals = 2.0
+                self.batched_signals = 1.0
                 if len(signal_by_agent) > 0:
                     max_agent, max_signal = max(
                         signal_by_agent.items(), key=lambda x: x[1]
